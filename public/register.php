@@ -52,6 +52,12 @@
 
       $created_at = date("Y-m-d H:i:s");
 
+      // Sanitize variables
+      $first_name = filter_var($first_name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $last_name = filter_var($last_name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+      $username = filter_var($username, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
       // Write SQL INSERT statement
       $sql = "INSERT INTO users (first_name, last_name, email, username, created_at) VALUES (";
       $sql .= "'{$first_name}', '{$last_name}', '{$email}', '{$username}', '{$created_at}')";
