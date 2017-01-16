@@ -43,7 +43,7 @@
 
     if (is_blank($_POST['email'])) {
       $errors[] = "Email cannot be blank.";
-    } elseif (!has_valid_email_format($_POST['username'])) {
+    } elseif (!has_valid_email_format($_POST['email'])) {
       $errors[] = "Email must be a valid form.";
     }
 
@@ -62,6 +62,7 @@
         db_close($db);
 
         // Redirect user to success page
+        redirect_to( './registration_success.php' );
 
       } else {
        
