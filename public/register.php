@@ -47,22 +47,8 @@
       $errors[] = "Email must be a valid form.";
     }
 
-    // Errors occurred, display error messages
-    $output = '';
-    if (!empty($errors)) {
-      $output .= "<div class=\"errors\">";
-      $output .= "Please fix the following errors:";
-      $output .= "<ul>";
-      foreach ($errors as $error) {
-        $output .= "<li>{$error}</li>";
-      }
-      $output .= "</ul>";
-      $output .= "</div>";
-      echo $output;
-    }
-  
     // No errors, submit data to database
-    else {
+    if (empty($errors)) {
 
       $created_at = date("Y-m-d H:i:s");
 
@@ -99,8 +85,10 @@
   <p>Register to become a Globitek Partner.</p>
 
   <?php
-    // TODO: display any form errors here
-    // Hint: private/functions.php can help
+    // Display form errors
+    if(!empty($errors)) {
+      echo display_errors($errors);
+    }
   ?>
 
   <form action="register.php" method="post">
