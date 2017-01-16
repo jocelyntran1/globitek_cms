@@ -24,9 +24,4 @@
     return filter_var($value, FILTER_VALIDATE_EMAIL);
   }
 
-  // Detect form submission
-  function is_post_request() {
-    return $_SERVER['REQUEST_METHOD'] == 'POST';
-  }
-
 ?>

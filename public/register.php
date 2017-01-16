@@ -10,7 +10,7 @@
   $username = "";
 
   // if this is a POST request, process the form
-  if($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if(is_post_request()) {
 
     // Confirm that POST values are present before accessing them.
     $first_name = $_POST['first_name'] ?? '';
