@@ -1,71 +1,66 @@
 
 # Project 1 - Globitek CMS
 
-Time spent: **X** hours spent in total
+Time spent: **7** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-1. [ ]  Required: Public page: Territories
-  * [ ]  Required: The page should be called "territories.php".
-  * [ ]  Required: It displays a bulleted list of states sorted alphabetically.
-  * [ ]  Required: There is a bulleted list of territories indented below each state.
-  * [ ]  Required: The territories are sorted based on a custom position value.
-  * [ ]  Required: Set territory position values such that:
-    * [ ]  'Northern' always comes before 'Southern'.
-    * [ ]  'Western' always comes before 'Eastern'.
-    * [ ]  Chicago, Las Vegas, and New York are before any "Outside" territories.
-  * [ ]  Required: When a territory name is the same as its state name, it does not display the territory name, just the state name.
-  * [ ]  Required: There is a list of assigned salespeople below each territory.
-    * [ ]  Sorted by last name then first name, unbulleted, unindented.
-    * [ ]  Note that New York City should have two salesperson assignments.
-  * [ ]  Required: Each salesperson's name is a link to a page with more details (salesperson.php).
 
-2. [ ]  Required: Public page: Salesperson
-  * [ ]  Required: The page should be called "salesperson.php".
-  * [ ]  Required: It has a link back to the territories.php page at the top.
-  * [ ]  Required: It displays contact information (name, phone, email) for a single salesperson.
-  * [ ]  Required: It displays a bulleted list of the salesperson's territories.
-  * [ ]  Required: It redirects to territories.php if the requested salesperson is not found.
-
-3. [ ]  Required:  Organize code to keep functions and database credentials private. Use good code formatting and code comments to make your code clear to others.
-
-4. [ ]  Required:  All dynamic content being output to HTML should be encoded using best practices.
-
-5. [ ]  Required:  Use database best practices such as freeing results from memory and closing the database connection when your code is finished using them.
+- [X] Create a Users Table
+  - [X] Define a table "users" for columns id, firstname, lastname, email, username, createdAt
+- [X] Create a Page with an HTML Form
+  - [X] with text inputs: first_name, last_name, email, username
+  - [X] submits to: itself ("public/register.php")
+- [X] Detect when the form is submitted
+  - [X] If "/public/register.php" is loaded directly, it should display the form.
+  - [X] If the form was submitted, it should retrieve the form data.
+- [X] Validate form data
+  - [X] Validate the presence of all form values.
+  - [X] Validate that no values are longer than 255 characters.
+  - [X] Validate that first_name and last_name have at least 2 characters.
+  - [X] Validate that username has at least 8 characters.
+  - [X] Validate that email contains a "@".
+- [X] Display form errors if any validations fail.
+  - [X] Do not submit the data to the database.
+  - [X] Redisplay the form with the submitted values filled in.
+  - [X] Report all errors as a list above the form.
+- [X] Submit successfully-validated form values to the database.
+  - [X] Write an SQL statement which will insert a new record into the globitek.users table using the submitted form values.
+- [X] Redirect the user to a confirmation page.
+  - [X] Redirect the user to the new page.
+- [X] Sanitize all dynamic output for HTML.
+ 
 
 The following advanced user stories are optional:
 
-* [ ]  Bonus: Move the header and footer of the HTML template into separate files and use include() to load them. Make sure the HTML title is still correct for both pages.
 
-* [ ]  Bonus: Create a new file "private/initialize.php". This file should become the only required file at the top of your PHP pages. It would then require all the other PHP files that are needed as well as create a new database connection.
+- [ ] Bonus 1: Validate that form values contain only whitelisted characters.
+  - [ ] first_name, last_name: letters, spaces, symbols: - , . '
+  - [ ] username: letters, numbers, symbols: _
+  - [ ] email: letters, numbers, symbols: _ @ .
+  
+- [ ] Bonus 2: Validate the uniqueness of the username.
 
-* [ ]  Bonus: Add a countries table with a one-to-many relationship to states. Add "United States" as the only country and assign all 50 states to it. Add it to the public pages and indent the states list below it.
-
-* [ ]  Bonus: If you added a countries table, use the MySQL console to add Canada as a country and populate the database with a few provinces and territories for Canada. Pick a salesperson or two and make assignments for all of the new territories.
-
-* [ ]  Bonus: Convert all SQL queries into callable functions.
-
-* [ ]  Advanced: Create a separate set of "staff area" pages in directory called "staff" which display states, territories, and salespeople. Each one should have a list view showing all records and a detail view for examining a single record.
-
-* [ ]  Advanced: If you created "staff area" pages, nest the pages for viewing territories inside the pages for viewing states. A user would select a state in order to view a list of the territories belonging to that state only.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/ZPvG8iD.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [Peek](https://github.com/phw/peek/releases).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
 
+Had a lot of trouble setting up PHP and MySQL on my Ubuntu computer. Also had issues with duplicate functions because I didn't know they were written already (is_post_request() specifically).
+
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2017] [Jocelyn Tran]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
